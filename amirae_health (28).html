@@ -2970,8 +2970,9 @@
 
     .cm-thanks {
       text-align: center;
-      padding: 3rem 2rem;
+      padding: 3.5rem 2rem 3rem;
       display: none;
+      position: relative;
     }
 
     .cm-thanks.show {
@@ -5876,6 +5877,8 @@
       setTimeout(() => {
         document.getElementById('cm-form-body').style.display = 'block';
         document.getElementById('cm-thanks').classList.remove('show');
+        const heroEl = document.querySelector('.cm-hero');
+        if (heroEl) heroEl.style.display = 'block';
         ['cm-name', 'cm-phone', 'cm-email', 'cm-message'].forEach(id => {
           const el = document.getElementById(id); if (el) el.value = '';
         });
@@ -5916,6 +5919,8 @@
         });
         document.getElementById('cm-form-body').style.display = 'none';
         document.getElementById('cm-thanks').classList.add('show');
+        const heroEl = document.querySelector('.cm-hero');
+        if (heroEl) heroEl.style.display = 'none';
       } catch (err) {
         alert('The callback request could not be sent. Please try again in a moment.');
       } finally {
@@ -6307,6 +6312,7 @@
 
       <!-- Thank you state -->
       <div class="cm-thanks" id="cm-thanks">
+        <button class="cm-close" onclick="closeContactModal()">✕</button>
         <div class="cm-thanks-icon">🦋</div>
         <h3>Thank you for reaching out</h3>
         <p>We've received your details and will be in touch soon.<br><br>
