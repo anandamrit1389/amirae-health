@@ -2697,6 +2697,47 @@
       }
     }
 
+    /* Target actual mobile screens for layout stacking and centering */
+    @media(max-width:600px) {
+
+      /* Center and stack booking form layout & inputs on mobile */
+      .book-layout {
+        padding: 2.5rem 1rem 3.5rem !important;
+      }
+
+      .form-card {
+        padding: 1.6rem 1rem !important;
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 24px !important;
+      }
+
+      .frow,
+      .cm-frow {
+        grid-template-columns: 1fr !important;
+        gap: 1.1rem !important;
+      }
+
+      /* Hide step labels on mobile to prevent horizontal overflow and center step numbers */
+      .bsi-label {
+        display: none !important;
+      }
+
+      .book-steps-indicator {
+        justify-content: center !important;
+        margin-bottom: 1.4rem !important;
+      }
+
+      /* Make payment and confirmation modals scrollable and fit on mobile screens */
+      .modal {
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+        padding: 1.8rem 1.2rem !important;
+        border-radius: 24px !important;
+      }
+    }
+
     /* ── CONTACT MODAL ── */
     .contact-modal-wrap {
       display: none;
@@ -5535,7 +5576,7 @@
             <label>Session Type *</label>
             <select id="f-type" onchange="updateFee(this.value)">
               <option value="">Choose a session...</option>
-              <option value="college">Therapy For Student (18–23)</option>
+              <option value="college">Therapy for Students (18–23)</option>
               <option value="adult">Individual Therapy</option>
               <option value="space">A Little Space (30 min)</option>
             </select>
@@ -5835,13 +5876,13 @@
         </div>
         <button class="copy-btn" id="copy-btn" onclick="copyUPI()">Copy</button>
       </div>
-      <div class="upi-apps">
+      <!-- <div class="upi-apps">
         <div class="upi-apps-label">Open in app</div>
         <button class="upi-app-btn" onclick="openUPIApp('gpay')">GPay</button>
         <button class="upi-app-btn" onclick="openUPIApp('phonepe')">PhonePe</button>
         <button class="upi-app-btn" onclick="openUPIApp('paytm')">Paytm</button>
         <button class="upi-app-btn" onclick="openUPIApp('bhim')">BHIM</button>
-      </div>
+      </div> -->
       <div class="pay-note">After paying, send a screenshot to confirm. A calendar invite and session link will follow.
       </div>
       <button class="confirm-pay-btn" onclick="confirmPayment()">I've Paid, Confirm Booking ✓</button>
@@ -5968,7 +6009,8 @@
 
     function getServiceLabel(value) {
       const labels = {
-        college: 'Therapy For Student (18-23)',
+        //adolescent: 'Adolescent Therapy (13-18)',
+        college: 'Therapy For Students (18-23)',
         adult: 'Individual Therapy',
         space: 'A Little Space (30 min)',
         unsure: 'Not sure yet, just want to talk'
@@ -6150,7 +6192,7 @@
 
     const SESSION_LABELS = {
       // adolescent: 'Adolescent Therapy',
-      college: 'Therapy For Student',
+      college: 'Therapy for Students (18-23)',
       adult: 'Individual Therapy',
       space: 'A Little Space'
     };
@@ -6308,7 +6350,7 @@
 
     function goToStep3(bookingData) {
       currentStep = 3;
-      const typeLabels = { college: 'College Therapy', adult: 'Individual Therapy', space: 'A Little Space' };
+      const typeLabels = { adolescent: 'Adolescent Therapy', college: 'College Therapy', adult: 'Individual Therapy', space: 'A Little Space' };
       const bsName = document.getElementById('bs-name');
       if (bsName) bsName.textContent = document.getElementById('f-name').value;
       const bsType = document.getElementById('bs-type');
@@ -6376,9 +6418,10 @@
           <label>I'm looking for...</label>
           <select id="cm-service">
             <option value="">Choose a service</option>
-            <option value="college">Therapy For Student (18–23)</option>
+            <!-- <option value="adolescent">Adolescent Therapy (13–18)</option> -->
+            <option value="college">Therapy for Students (18–23)</option>
             <option value="adult">Individual Therapy</option>
-            <option value="space">A Little Space (30 min)</option>
+            <option value="space">A Little Space (30 min session)</option>
             <option value="unsure">Not sure yet, just want to talk</option>
           </select>
         </div>
@@ -6392,9 +6435,7 @@
         <button class="cm-close" onclick="closeContactModal()">✕</button>
         <div class="cm-thanks-icon">🦋</div>
         <h3>Thank you for reaching out</h3>
-        <p>We've received your details and will be in touch soon.<br><br>
-          We look forward to connecting with you. 🌸
-        </p>
+        <p>We've received your details and will be in touch soon.</p>
       </div>
     </div>
   </div>
