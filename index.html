@@ -2699,7 +2699,6 @@
 
     /* Target actual mobile screens for layout stacking and centering */
     @media(max-width:600px) {
-
       /* Center and stack booking form layout & inputs on mobile */
       .book-layout {
         padding: 2.5rem 1rem 3.5rem !important;
@@ -2713,8 +2712,7 @@
         border-radius: 24px !important;
       }
 
-      .frow,
-      .cm-frow {
+      .frow, .cm-frow {
         grid-template-columns: 1fr !important;
         gap: 1.1rem !important;
       }
@@ -4399,7 +4397,6 @@
         grid-template-columns: 1fr;
         padding: 3rem 1.5rem;
       }
-
       .svc-modern-card {
         grid-column: auto !important;
       }
@@ -4891,7 +4888,6 @@
       .am-header {
         padding: 2.5rem 1.5rem 1rem !important;
       }
-
       .am-body {
         display: flex !important;
         flex-direction: column !important;
@@ -4899,9 +4895,7 @@
         background: var(--ivory) !important;
         gap: 1.5rem !important;
       }
-
-      .am-left,
-      .am-right {
+      .am-left, .am-right {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
@@ -4910,26 +4904,19 @@
         background: var(--ivory) !important;
         gap: 1.5rem !important;
       }
-
       .am-left {
         padding: 1rem 1.5rem 0 1.5rem !important;
       }
-
       .am-right {
         padding: 0 1.5rem 2.5rem 1.5rem !important;
         border-left: none !important;
       }
-
-      .am-left p,
-      .am-right p,
-      .am-right .bq {
-        max-width: 380px !important;
-        /* Perfect squarish width block */
+      .am-left p, .am-right p, .am-right .bq {
+        max-width: 380px !important; /* Perfect squarish width block */
         width: 100% !important;
         margin: 0 auto !important;
         box-sizing: border-box !important;
       }
-
       .am-botanical {
         display: none !important;
       }
@@ -5577,7 +5564,7 @@
             <select id="f-type" onchange="updateFee(this.value)">
               <option value="">Choose a session...</option>
               <option value="college">Therapy for Students (18–23)</option>
-              <option value="adult">Individual Therapy</option>
+              <option value="adult">Adult Individual Therapy</option>
               <option value="space">A Little Space (30 min)</option>
             </select>
           </div>
@@ -5788,7 +5775,7 @@
         <div class="f-logo">amirae</div>
         <div class="f-tagline">a place to truly just be</div>
         <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);max-width:260px;font-weight:300;line-height:1.7;">Online
-          therapy &amp; counselling for adolescents, college students, and adults.</p>
+          therapy &amp; counselling for adolescents, college students, and adults across India.</p>
         <div class="f-socials">
           <a class="f-social-link"
             href="https://www.instagram.com/amirae.health?igsh=MTNsNmVudTJuaXZhaA%3D%3D&utm_source=qr" target="_blank"
@@ -6011,7 +5998,7 @@
       const labels = {
         //adolescent: 'Adolescent Therapy (13-18)',
         college: 'Therapy For Students (18-23)',
-        adult: 'Individual Therapy',
+        adult: 'Adult Individual Therapy',
         space: 'A Little Space (30 min)',
         unsure: 'Not sure yet, just want to talk'
       };
@@ -6193,7 +6180,7 @@
     const SESSION_LABELS = {
       // adolescent: 'Adolescent Therapy',
       college: 'Therapy for Students (18-23)',
-      adult: 'Individual Therapy',
+      adult: 'Adult Individual Therapy',
       space: 'A Little Space'
     };
 
@@ -6311,14 +6298,24 @@
       container.innerHTML = '<div id="cal-inline-booker" style="width:100%;height:100%;min-height:650px;"></div>';
       const phoneEl = document.getElementById('f-phone');
       const noteEl = document.getElementById('f-note');
+      const phoneVal = phoneEl ? phoneEl.value.trim() : '';
       Cal('inline', {
         elementOrSelector: '#cal-inline-booker',
         calLink: CAL_BOOKING_PATH,
         config: {
           name: name,
           email: email,
+          // Prefill native Cal.com phone number booking question field
+          attendeePhoneNumber: phoneVal,
+          // Prefill custom/fallback Cal.com question fields if configured
+          phone: phoneVal,
+          phoneNumber: phoneVal,
+          phone_number: phoneVal,
+          'phone-number': phoneVal,
+          // Prefill metadata
           'metadata[sessionType]': SESSION_LABELS[type] || type,
-          'metadata[phone]': phoneEl ? phoneEl.value.trim() : '',
+          'metadata[phone]': phoneVal,
+          'metadata[phone_number]': phoneVal,
           'metadata[note]': noteEl ? noteEl.value.trim() : ''
         }
       });
@@ -6420,7 +6417,7 @@
             <option value="">Choose a service</option>
             <!-- <option value="adolescent">Adolescent Therapy (13–18)</option> -->
             <option value="college">Therapy for Students (18–23)</option>
-            <option value="adult">Individual Therapy</option>
+            <option value="adult">Adult Individual Therapy</option>
             <option value="space">A Little Space (30 min session)</option>
             <option value="unsure">Not sure yet, just want to talk</option>
           </select>
