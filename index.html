@@ -2655,6 +2655,10 @@
         padding: 3.5rem 1.5rem;
       }
 
+      .values-strip {
+        padding: 3.5rem 1.2rem 4rem !important;
+      }
+
       .pillars-grid,
       .vs-grid,
       .ac-grid {
@@ -4022,6 +4026,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      background-color: #EED8F7;
+    }
+
+    @media (max-width: 900px) {
+      .hero-bg-section {
+        height: 60vh;
+        min-height: 440px;
+      }
     }
 
     .hero-bg-img {
@@ -4032,6 +4044,13 @@
       background-repeat: no-repeat;
       z-index: 0;
       animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    @media (max-width: 900px) {
+      .hero-bg-img {
+        background-size: 140% auto;
+        background-position: center center;
+      }
     }
 
     @keyframes heroZoom {
@@ -4064,6 +4083,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-bg-content {
+        bottom: 8%;
+      }
     }
 
     .hero-bg-btn {
@@ -4817,6 +4842,45 @@
 
     .f-social-link:hover svg {
       opacity: 1;
+    }
+
+    /* Bulletproof mobile styling overrides for About Amirae section */
+    @media (max-width: 900px) {
+      .am-header {
+        padding: 2.5rem 1.5rem 1rem !important;
+      }
+      .am-body {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        background: var(--ivory) !important;
+        gap: 1.5rem !important;
+      }
+      .am-left, .am-right {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        background: var(--ivory) !important;
+        gap: 1.5rem !important;
+      }
+      .am-left {
+        padding: 1rem 1.5rem 0 1.5rem !important;
+      }
+      .am-right {
+        padding: 0 1.5rem 2.5rem 1.5rem !important;
+        border-left: none !important;
+      }
+      .am-left p, .am-right p, .am-right .bq {
+        max-width: 380px !important; /* Perfect squarish width block */
+        width: 100% !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+      }
+      .am-botanical {
+        display: none !important;
+      }
     }
   </style>
 
@@ -5672,7 +5736,7 @@
         <div class="f-logo">amirae</div>
         <div class="f-tagline">a place to truly just be</div>
         <p style="font-size:0.8rem;color:rgba(255,255,255,0.25);max-width:260px;font-weight:300;line-height:1.7;">Online
-          therapy &amp; counselling for adolescents, college students, and adults.</p>
+          therapy &amp; counselling for adolescents, college students, and adults across India.</p>
         <div class="f-socials">
           <a class="f-social-link"
             href="https://www.instagram.com/amirae.health?igsh=MTNsNmVudTJuaXZhaA%3D%3D&utm_source=qr" target="_blank"
@@ -5760,13 +5824,13 @@
         </div>
         <button class="copy-btn" id="copy-btn" onclick="copyUPI()">Copy</button>
       </div>
-      <!-- <div class="upi-apps">
+      <div class="upi-apps">
         <div class="upi-apps-label">Open in app</div>
         <button class="upi-app-btn" onclick="openUPIApp('gpay')">GPay</button>
         <button class="upi-app-btn" onclick="openUPIApp('phonepe')">PhonePe</button>
         <button class="upi-app-btn" onclick="openUPIApp('paytm')">Paytm</button>
         <button class="upi-app-btn" onclick="openUPIApp('bhim')">BHIM</button>
-      </div> -->
+      </div>
       <div class="pay-note">After paying, send a screenshot to confirm. A calendar invite and session link will follow.
       </div>
       <button class="confirm-pay-btn" onclick="confirmPayment()">I've Paid, Confirm Booking ✓</button>
@@ -6302,10 +6366,10 @@
           <label>I'm looking for...</label>
           <select id="cm-service">
             <option value="">Choose a service</option>
-            <!-- <option value="adolescent">Adolescent Therapy (13–18)</option> -->
+            <option value="adolescent">Adolescent Therapy (13–18)</option>
             <option value="college">College Student Therapy (18–23)</option>
             <option value="adult">Adult Individual Therapy</option>
-            <option value="space">A Little Space (30 min session)</option>
+            <option value="space">A Little Space (30–45 min)</option>
             <option value="unsure">Not sure yet, just want to talk</option>
           </select>
         </div>
@@ -6319,7 +6383,9 @@
         <button class="cm-close" onclick="closeContactModal()">✕</button>
         <div class="cm-thanks-icon">🦋</div>
         <h3>Thank you for reaching out</h3>
-        <p>We've received your details and will be in touch soon.</p>
+        <p>We've received your details and will be in touch soon.<br><br>
+          We look forward to connecting with you. 🌸
+        </p>
       </div>
     </div>
   </div>
